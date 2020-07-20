@@ -1,0 +1,153 @@
+<form class="example-form" [formGroup]="contactform" (ngSubmit)="onSubmit()">
+  <mat-form-field class="example-full-width">
+    <mat-label>Primer Nombre</mat-label>
+    <input
+      matInput
+      formControlName="firstName"
+      [ngClass]="{
+        'is-invalid': isValidField('firstName')
+      }"
+    />
+  </mat-form-field>
+
+  <div class="invalid-feedback">
+    <span *ngIf="contactform.get('firstName').errors?.required">
+      Please enter your first name
+    </span>
+    <span *ngIf="contactform.get('firstName').errors?.minlength">
+      First Name must be longer
+      {{ contactform.get("firstName").errors?.minlength?.requiredLength }}
+      characters.
+    </span>
+  </div>
+
+  <mat-form-field class="example-full-width">
+    <mat-label>Nombre Usuario</mat-label>
+    <input
+      matInput
+      formControlName="userName"
+      [ngClass]="{'is-invalid': isValidUserName }"
+    />
+  </mat-form-field>
+
+  <div class="invalid-feedback">
+    <span *ngIf="contactform.get('userName').errors?.required">
+      Please enter your user name
+    </span>
+    <span *ngIf="contactform.get('userName').errors?.minlength">
+     User Name must be longer
+      {{
+        contactform.get('userName').errors?.minlength?.requiredLength
+      }}
+      characters.
+    </span>
+    <span *ngIf="contactform.get('userName').errors?.pattern">
+      Please enter valid email
+    </span>
+  </div>
+
+  <mat-form-field class="example-full-width">
+    <mat-label>Ciudad</mat-label>
+    <input matInput formControlName="city"
+    [ngClass]="{
+      'is-invalid': isValidField('city')
+    }" />
+  </mat-form-field>
+
+  <div class="invalid-feedback">
+    <span *ngIf="contactform.get('city').errors?.required">
+      Please enter your city
+    </span>
+    <span *ngIf="contactform.get('city').errors?.minlength">
+      City must be longer
+      {{ contactform.get("city").errors?.minlength?.requiredLength }}
+      characters.
+    </span>
+  </div>
+
+  <mat-form-field class="example-full-width">
+    <mat-label>Estado</mat-label>
+    <input matInput formControlName="state"
+    [ngClass]="{
+      'is-invalid': isValidField('state')
+    }" />
+  </mat-form-field>
+
+  <div class="invalid-feedback">
+    <span *ngIf="contactform.get('state').errors?.required">
+      Please enter your state
+    </span>
+    <span *ngIf="contactform.get('state').errors?.minlength">
+      State must be longer
+      {{ contactform.get("state").errors?.minlength?.requiredLength }}
+      characters.
+    </span>
+  </div>
+
+  <mat-form-field class="example-full-width">
+    <mat-label>ZIP</mat-label>
+    <input matInput formControlName="zip"
+    [ngClass]="{
+      'is-invalid': isValidField('zip')
+    }"
+     />
+  </mat-form-field>
+
+  <div class="invalid-feedback">
+    <span *ngIf="contactform.get('zip').errors?.required">
+      Please enter your zip code
+    </span>
+    <span *ngIf="contactform.get('zip').errors?.minlength">
+      ZIP code must be longer
+      {{ contactform.get("zip").errors?.minlength?.requiredLength }}
+      characters.
+    </span>
+  </div>
+
+  <button mat-raised-button color="primary" [disabled]="contactform.invalid">
+    Submit
+  </button>
+
+  <button mat-raised-button color="basic" (click)="onSetDefault()">
+    Set Values Default
+  </button>
+  <button mat-raised-button color="warn" (click)="onPathValue()">
+    Patch Values
+  </button>
+  <button mat-raised-button color="warn" (click)="OnSetValue()">
+    Set Values
+  </button>
+
+  <button mat-raised-button color="accent" (click)="onReset()">
+    Reset Values
+  </button>
+</form>
+
+<pre>
+  Value:
+{{ contactform.value | json }}
+</pre>
+
+<pre>
+  Status:
+  {{ contactform.status }}
+</pre>
+
+<pre>
+  Valid:
+  {{ contactform.valid }}
+</pre>
+
+<pre>
+  Invalid:
+  {{ contactform.invalid }}
+</pre>
+<pre>
+  Dirty:
+  {{ contactform.dirty }}
+</pre>
+
+<pre>
+  Touched:
+  {{ contactform.touched }}
+</pre>
