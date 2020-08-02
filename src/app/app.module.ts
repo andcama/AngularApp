@@ -23,7 +23,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule} from '@angular/material/select';
 import { ToDoListComponent } from './ToDoList/ToDoList.component';
 import { FormularioReactiveComponent } from './FormularioReactive/FormularioReactive.component';
-
+import {DoListComponent} from './DoList/DoList.component'
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 
 
@@ -31,7 +32,8 @@ import { FormularioReactiveComponent } from './FormularioReactive/FormularioReac
   declarations: [
     AppComponent,
     ToDoListComponent,
-    FormularioReactiveComponent
+    FormularioReactiveComponent,
+    DoListComponent
   ],
   imports: [
     BrowserModule,
@@ -51,7 +53,8 @@ import { FormularioReactiveComponent } from './FormularioReactive/FormularioReac
     MatTableModule,
     MatDialogModule,
     MatSnackBarModule,
-    MatInputModule
+    MatInputModule,
+    MatCheckboxModule
   ],
   providers: [],
   bootstrap: [AppComponent]
